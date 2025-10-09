@@ -1,13 +1,21 @@
-<div
-  style="
+<div style="
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20vh;
-  "
->
-  <app-text-input (usernameChange)="receiveUsername($event)"></app-text-input>
+    margin-top: 10vh;
+  ">
+  <app-text-input *ngIf="!profileShown" (usernameChange)="receiveUsername($event)"></app-text-input>
   <br />
   <br />
-  <button class="submit-button" (click)="onSubmit()">Inspect</button>
+  <button *ngIf="!profileShown" class="submit-button" (click)="onSubmit()">Inspect</button>
+  <button *ngIf="profileShown" class="start-over" (click)="startOver()"> <i class="fa-solid fa-rotate"></i>
+    Start Over</button>
+  <app-profile-card *ngIf="profileShown">
+    <div *ngIf="loading">Loading profile...</div>
+    <app-profile *ngIf=" profile && !loading" [username]="profile.username" [name]="profile.name" [location]="profile.location" [bio]="profile.bio"
+      [avatarUrl]="profile.avatar_url" [titles]="profile.titles" [favoriteLanguage]="profile['favorite-language']"
+      [publicRepos]="profile['public-repos']" [totalStars]="profile['total-stars']"
+      [highestStarred]="profile['highest-starred']" [perfectRepos]="profile['perfect-repos']"
+      [followers]="profile.followers" [following]="profile.following"></app-profile>
+  </app-profile-card>
 </div>

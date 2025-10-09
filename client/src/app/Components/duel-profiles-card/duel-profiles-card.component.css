@@ -1,0 +1,23 @@
+.duel-center{
+  min-height: 100vh; display:flex; align-items:center; justify-content:center;
+}
+.duel-row{
+  display:flex; align-items:center; justify-content:center; gap:2rem;
+}
+.duel-side{
+  flex:1; min-width:260px; display:flex; justify-content:center;
+}
+
+/* VS badge */
+.vs-badge{
+  width:72px; height:72px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:1.25rem;
+  color:#e63946; border:2px solid #e63946; background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+@media (max-width: 768px){
+  .duel-row{ flex-direction:column; }
+  .vs-badge{ margin: .5rem 0; }
+}

@@ -1,10 +1,41 @@
-.submit-button{
+.submit-button {
   box-sizing: border-box;
-width: 265px;
-height: 81px;
-cursor: pointer;
-background: #FFFFFF;
-border: 1px solid #000000;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
+  width: 265px;
+  height: 81px;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.start-over {
+  box-sizing: border-box;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+}
+
+.winner-display {
+  box-sizing: border-box;
+  width: 400px;
+  height: 75px;
+
+  background: #E1F1FF;
+  border: 2px solid rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+
+  color: green;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  display: flex;            
+  align-items: center;      /* centers text vertically inside */
+  justify-content: center;  /* centers text horizontally inside */
+  text-align: center;
+  margin: 1rem auto;        /* centers it in parent width-wise but not full screen */
 }

@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { TextInputComponent } from './Components/text-input/text-input.component';
 import { UserService } from 'src/user.service';
+import { ProfileCardComponent } from './Components/profile-card/profile-card.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { DuelProfilesCardComponent } from './Components/duel-profiles-card/duel-profiles-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { UserService } from 'src/user.service';
     NavbarComponent,
     LinkButtonComponent,
     HomeComponent,
-    TextInputComponent
+    TextInputComponent,
+    ProfileCardComponent,
+    ProfileComponent,
+    DuelProfilesCardComponent
   ],
   imports: [
     BrowserModule,
