@@ -33,6 +33,9 @@ export class DuelComponent implements OnInit {
   winningAttributesP2: Record<string, boolean> = {};
   loading: boolean = false;
   numericKeys: string[] = ['public-repos', 'total-stars', 'highest-starred', 'perfect-repos', 'followers', 'following'];
+  tiebreaker: number = 0;
+  winner: string = "";
+  errorMessage: string | null = null;
 
   constructor(private userService: UserService) { }
 
@@ -48,7 +51,6 @@ export class DuelComponent implements OnInit {
   }
   onSubmit() {
     this.loading = true;
-    this.profilesShown = true;
     this.userService.duelUsers(this.usernameOne, this.usernameTwo)
       .then((data: any) => {
         if (!data) {
@@ -76,9 +78,26 @@ export class DuelComponent implements OnInit {
         if (this.profiles.length === 2) {
           this.decideWinner();
         }
+        this.profilesShown = true;
       })
 
-      .catch(err => console.error(err))
+      .catch(err => {
+        this.loading = false;
+        console.error(err);
+        if(this.usernameOne === "" && this.usernameTwo === ""){
+          this.errorMessage = "Please enter two usernames to duel.";
+        }
+        else if(this.usernameOne === "" || this.usernameTwo === ""){
+          this.errorMessage = "Please enter another username to duel.";
+        }
+        else if (err.status === 404) {
+          this.errorMessage = "One or both usernames now found. Please check the usernames.";
+        } 
+        else {
+          this.errorMessage = "Something went wrong. Please try again.";
+        }
+        this.profilesShown = false;
+      })
       .finally(() => {
         this.loading = false;
       });
@@ -92,16 +111,46 @@ export class DuelComponent implements OnInit {
     }
     const [p1, p2] = this.profiles;
     const resultP1: Record<string, boolean> = {};
+    const resultP2: Record<string, boolean> = {};
     for (const key of this.numericKeys) {
       const v1 = (p1 as any)[key];
-      const v2 = (p1 as any)[key];
-      resultP1[key] = v1 > v2;
+      const v2 = (p2 as any)[key];
+      if (v1 !== v2) {
+        resultP1[key] = v1 > v2;
+        resultP2[key] = v1 < v2;
+      }
+      else {
+        resultP1[key] = false;
+        resultP2[key] = false;
+      }
     }
-    this.winningAttributesP1 = resultP1
+    this.winningAttributesP1 = resultP1;
+    this.winningAttributesP2 = resultP2;
+
+    this.tallyWinner();
+  }
+
+  tallyWinner() {
+    let p1Count = 0;
+    let p2Count = 0;
+    for (const key of this.numericKeys) {
+      if (this.winningAttributesP1[key]) {
+        p1Count++;
+      } else if (this.winningAttributesP2[key]) {
+        p2Count++;
+      }
+    }
+    if (p1Count === p2Count) {
+      this.winner = "It's A Draw!";
+    }
+    else {
+      this.winner = p1Count > p2Count ? this.usernameOne : this.usernameTwo;
+    }
   }
 
   startOver() {
     this.profilesShown = false;
+    this.errorMessage = "";
     this.profiles = []
   }
 }

@@ -1,16 +1,15 @@
 <div>
-    <img [src]="avatarUrl" alt="{{ username }} avatar" class="avatar" />
-
+  <img [src]="avatarUrl" alt="{{ username }} avatar" class="avatar" />
   <h4>Username: {{ username }}</h4>
   <h4>Name: {{ name }}</h4>
   <h4>Location: {{ location }}</h4>
   <h4>Bio: {{ bio }}</h4>
   <h4>Titles: {{ titles.join(', ') }}</h4>
   <h4>Favorite Language: {{ favoriteLanguage }}</h4>
-  <h4>Public Repositories: {{ publicRepos }}</h4>
-  <h4>Total Stars: {{ totalStars }}</h4>
-  <h4>Highest Starred Repo: {{ highestStarred }}</h4>
-  <h4>Perfect Repos (no issues): {{ perfectRepos }}</h4>
-  <h4>Followers: {{ followers }}</h4>
-  <h4>Following: {{ following }}</h4>
+  <h4 [ngClass]="{ 'winner': publicReposBool === true, 'loser': publicReposBool === false }">Public Repositories: {{ publicRepos }}</h4>
+  <h4 [ngClass]="{ 'winner': totalStarsBool === true, 'loser': totalStarsBool === false }">Total Stars: {{ totalStars }}</h4>
+  <h4 [ngClass]="{ 'winner': highestStarredBool === true, 'loser': highestStarredBool === false }">Highest Starred Repo: {{ highestStarred }}</h4>
+  <h4 [ngClass]="{ 'winner': perfectReposBool === true, 'loser': perfectReposBool === false }">Perfect Repos (no issues): {{ perfectRepos }}</h4>
+  <h4 [ngClass]="{ 'winner': followersBool === true, 'loser': followersBool === false }">Followers: {{ followers }}</h4>
+  <h4 [ngClass]="{ 'winner': followingBool === true, 'loser': followingBool === false }">Following: {{ following }}</h4>
 </div>

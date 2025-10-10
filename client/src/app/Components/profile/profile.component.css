@@ -14,3 +14,13 @@
   border-radius: 50%;
   margin-bottom: 1rem;
 }
+
+.winner {
+  border: 2px solid green;
+  background-color: #e8ffe8;
+}
+
+.loser {
+  border: 2px solid red;
+  background-color: #ffe8e8;
+}

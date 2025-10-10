@@ -34,8 +34,14 @@
   font-weight: bold;
 
   display: flex;            
-  align-items: center;      /* centers text vertically inside */
-  justify-content: center;  /* centers text horizontally inside */
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin: 1rem auto;        /* centers it in parent width-wise but not full screen */
+  margin: 1rem auto;
+}
+
+
+.error-message {
+  color: red;
+  font-weight: bold;
 }

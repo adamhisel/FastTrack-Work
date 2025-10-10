@@ -30,6 +30,7 @@ export class InspectComponent implements OnInit {
   profileShown: boolean = false;
   profile!: Profile;
   loading: boolean = false;
+  errorMessage: string | null = null;
 
   constructor(private userService: UserService) { }
 
@@ -42,12 +43,25 @@ export class InspectComponent implements OnInit {
 
   onSubmit() {
     this.loading = true;
-    this.profileShown = true;
     this.userService.inspectUser(this.username)
       .then((data: any) => {
+        this.profileShown = true;
         this.profile = data as Profile;
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        this.loading = false;
+        console.error(err);
+        if(this.username === ""){
+          this.errorMessage = "Please enter a username.";
+        }
+        else if (err.status === 404) {
+          this.errorMessage = "User not found. Please check the username.";
+        } 
+        else {
+          this.errorMessage = "Something went wrong. Please try again.";
+        }
+        this.profileShown = false;
+      })
       .finally(() => {
         this.loading = false;
       });
@@ -55,6 +69,7 @@ export class InspectComponent implements OnInit {
 
   startOver() {
     this.profileShown = false;
+    this.errorMessage = "";
     this.profile = {
       username: '',
       name: '',

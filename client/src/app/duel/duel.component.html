@@ -10,11 +10,14 @@
     <app-text-input *ngIf="!profilesShown" (usernameChange)="receiveUsernameTwo($event)"></app-text-input>
   </div>
   <br />
+  <div *ngIf="errorMessage && !profilesShown" class="error-message">
+    {{ errorMessage }}
+  </div>
   <br />
   <h1 *ngIf="profilesShown">Winner</h1>
   <div *ngIf="profilesShown" class="winner-display">
     <div *ngIf="loading">Loading...</div>
-    <h4>{{profiles[0].username}}</h4>
+    <h4 *ngIf="!loading">{{winner}}</h4>
   </div>
 
   <button *ngIf="profilesShown" class="start-over" (click)="startOver()"> <i class="fa-solid fa-rotate"></i>
@@ -28,12 +31,12 @@
         [favoriteLanguage]="profiles[0]['favorite-language']" [publicRepos]="profiles[0]['public-repos']"
         [totalStars]="profiles[0]['total-stars']" [highestStarred]="profiles[0]['highest-starred']"
         [perfectRepos]="profiles[0]['perfect-repos']" [followers]="profiles[0].followers"
-        [following]="profiles[0].following" [publicReposBool]="winningAttributesP1['public-repos'] ?? null"
-        [totalStarsBool]="winningAttributesP1['total-stars'] ?? null"
-        [highestStarredBool]="winningAttributesP1['highest-starred'] ?? null"
-        [perfectReposBool]="winningAttributesP1['perfect-repos'] ?? null"
-        [followersBool]="winningAttributesP1['followers'] ?? null"
-        [followingBool]="winningAttributesP1['following'] ?? null">
+        [following]="profiles[0].following" [publicReposBool]="winningAttributesP1['public-repos'] "
+        [totalStarsBool]="winningAttributesP1['total-stars'] "
+        [highestStarredBool]="winningAttributesP1['highest-starred'] "
+        [perfectReposBool]="winningAttributesP1['perfect-repos'] "
+        [followersBool]="winningAttributesP1['followers'] "
+        [followingBool]="winningAttributesP1['following'] ">
       </app-profile>
     </app-profile-card>
 
@@ -43,7 +46,12 @@
         [favoriteLanguage]="profiles[1]['favorite-language']" [publicRepos]="profiles[1]['public-repos']"
         [totalStars]="profiles[1]['total-stars']" [highestStarred]="profiles[1]['highest-starred']"
         [perfectRepos]="profiles[1]['perfect-repos']" [followers]="profiles[1].followers"
-        [following]="profiles[1].following">
+        [following]="profiles[1].following" [publicReposBool]="winningAttributesP2['public-repos'] "
+        [totalStarsBool]="winningAttributesP2['total-stars'] "
+        [highestStarredBool]="winningAttributesP2['highest-starred'] "
+        [perfectReposBool]="winningAttributesP2['perfect-repos'] "
+        [followersBool]="winningAttributesP2['followers'] "
+        [followingBool]="winningAttributesP2['following'] ">
       </app-profile>
     </app-profile-card>
   </app-duel-profiles-card>

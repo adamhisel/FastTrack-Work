@@ -6,16 +6,21 @@
   ">
   <app-text-input *ngIf="!profileShown" (usernameChange)="receiveUsername($event)"></app-text-input>
   <br />
+  <div *ngIf="errorMessage && !profileShown" class="error-message">
+    {{ errorMessage }}
+  </div>
   <br />
   <button *ngIf="!profileShown" class="submit-button" (click)="onSubmit()">Inspect</button>
+
   <button *ngIf="profileShown" class="start-over" (click)="startOver()"> <i class="fa-solid fa-rotate"></i>
     Start Over</button>
   <app-profile-card *ngIf="profileShown">
     <div *ngIf="loading">Loading profile...</div>
-    <app-profile *ngIf=" profile && !loading" [username]="profile.username" [name]="profile.name" [location]="profile.location" [bio]="profile.bio"
-      [avatarUrl]="profile.avatar_url" [titles]="profile.titles" [favoriteLanguage]="profile['favorite-language']"
-      [publicRepos]="profile['public-repos']" [totalStars]="profile['total-stars']"
-      [highestStarred]="profile['highest-starred']" [perfectRepos]="profile['perfect-repos']"
-      [followers]="profile.followers" [following]="profile.following"></app-profile>
+    <app-profile *ngIf=" profile && !loading" [username]="profile.username" [name]="profile.name"
+      [location]="profile.location" [bio]="profile.bio" [avatarUrl]="profile.avatar_url" [titles]="profile.titles"
+      [favoriteLanguage]="profile['favorite-language']" [publicRepos]="profile['public-repos']"
+      [totalStars]="profile['total-stars']" [highestStarred]="profile['highest-starred']"
+      [perfectRepos]="profile['perfect-repos']" [followers]="profile.followers"
+      [following]="profile.following"></app-profile>
   </app-profile-card>
 </div>

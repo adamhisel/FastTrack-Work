@@ -29,10 +29,8 @@ export class ProfileComponent implements OnInit {
   @Input() followingBool: boolean | null = null;
 
 
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
