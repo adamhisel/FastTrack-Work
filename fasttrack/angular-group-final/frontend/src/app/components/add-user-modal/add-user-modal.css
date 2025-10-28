@@ -1,0 +1,162 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 35, 48, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background-color: #0b1b2b;
+  color: #e0e6eb;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 550px;
+  padding: 2rem;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  color: #1fc5a8;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #9bd7cc;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-button:hover {
+  color: #1fc5a8;
+}
+
+/* === FORM === */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 2.0rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #9bd7cc;
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #1fc5a8;
+  border-radius: 6px;
+  background-color: #102b3f;
+  color: #e0e6eb;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #27e0bf;
+  background-color: #143850;
+  outline: none;
+}
+
+.form-control.error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #e74c3c;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-group input {
+  width: 16px;
+  height: 16px;
+  accent-color: #1fc5a8;
+}
+
+.checkbox-group span {
+  color: #e0e6eb;
+  font-size: 0.95rem;
+}
+
+/* === BUTTONS === */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-cancel,
+.btn-submit {
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 18px;
+  font-size: 1rem;
+  transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+.btn-cancel {
+  background-color: #223b4a;
+  color: #e0e6eb;
+}
+
+.btn-cancel:hover {
+  background-color: #2e5263;
+}
+
+.btn-submit {
+  background-color: #1fc5a8;
+  color: #0b1b2b;
+}
+
+.btn-submit:hover {
+  background-color: #27e0bf;
+}
+
+.btn-submit:disabled {
+  background-color: #1a3a4d;
+  color: #7a9ea5;
+  cursor: not-allowed;
+}

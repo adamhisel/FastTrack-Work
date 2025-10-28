@@ -1,0 +1,212 @@
+<div class="modal-backdrop" (click)="onBackdropClick($event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="modal-title">Add New User</h2>
+      <button class="close-button" (click)="onClose()" type="button">
+        <span>&times;</span>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username">Username *</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Username"
+          class="form-control"
+          [class.error]="form.get('username')?.invalid && form.get('username')?.touched"
+        />
+        @if (form.get('username')?.invalid && form.get('username')?.touched) {
+          <div class="error-message">
+            @if (form.get('username')?.hasError('required')) {
+              <span>Username is required.</span>
+            }
+            @if (form.get('username')?.hasError('minlength')) {
+              <span>Username must be at least 3 characters.</span>
+            }
+            @if (form.get('username')?.hasError('maxlength')) {
+              <span>Username cannot exceed 20 characters.</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="First Name"
+            class="form-control"
+            [class.error]="form.get('firstName')?.invalid && form.get('firstName')?.touched"
+          />
+          @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+            <div class="error-message">
+              @if (form.get('firstName')?.hasError('required')) {
+                <span>First name is required.</span>
+              }
+              @if (form.get('firstName')?.hasError('minlength')) {
+                <span>First name must be at least 2 characters.</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Last Name"
+            class="form-control"
+            [class.error]="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+          />
+          @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+            <div class="error-message">
+              @if (form.get('lastName')?.hasError('required')) {
+                <span>Last name is required.</span>
+              }
+              @if (form.get('lastName')?.hasError('minlength')) {
+                <span>Last name must be at least 2 characters.</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="user@example.com"
+          class="form-control"
+          [class.error]="form.get('email')?.invalid && form.get('email')?.touched"
+        />
+        @if (form.get('email')?.invalid && form.get('email')?.touched) {
+          <div class="error-message">
+            @if (form.get('email')?.hasError('required')) {
+              <span>Email is required.</span>
+            }
+            @if (form.get('email')?.hasError('email')) {
+              <span>Please enter a valid email address.</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          placeholder="(555) 123-4567"
+          class="form-control"
+          [class.error]="form.get('phone')?.invalid && form.get('phone')?.touched"
+        />
+        @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+          <div class="error-message">
+            @if (form.get('phone')?.hasError('pattern')) {
+              <span>Please enter a valid phone number (e.g., 555-123-4567).</span>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="Password"
+            class="form-control"
+            [class.error]="form.get('password')?.invalid && form.get('password')?.touched"
+          />
+          @if (form.get('password')?.invalid && form.get('password')?.touched) {
+            <div class="error-message">
+              @if (form.get('password')?.hasError('required')) {
+                <span>Password is required.</span>
+              }
+              @if (form.get('password')?.hasError('minlength')) {
+                <span>Password must be at least 8 characters.</span>
+              }
+              @if (form.get('password')?.hasError('pattern')) {
+                <span>Password must contain at least one letter and one number.</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password *</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+            class="form-control"
+            [class.error]="(form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched) || (form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched)"
+          />
+          @if (form.get('confirmPassword')?.invalid && form.get('confirmPassword')?.touched) {
+            <div class="error-message">
+              @if (form.get('confirmPassword')?.hasError('required')) {
+                <span>Please confirm your password.</span>
+              }
+            </div>
+          }
+          @if (form.hasError('passwordMismatch') && form.get('confirmPassword')?.touched && !form.get('confirmPassword')?.hasError('required')) {
+            <div class="error-message">
+              <span>Passwords do not match.</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label>
+          <input
+            type="checkbox"
+            formControlName="admin"
+          />
+          <span>Admin User</span>
+        </label>
+      </div>
+
+      <!-- <div class="form-group checkbox-group">
+        <label>
+          <input
+            type="checkbox"
+            formControlName="active"
+          />
+          <span>Active</span>
+        </label>
+      </div> -->
+
+      <div class="modal-actions">
+        <button
+          type="button"
+          class="btn-cancel"
+          (click)="onClose()"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="btn-submit"
+        >
+          Add User
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

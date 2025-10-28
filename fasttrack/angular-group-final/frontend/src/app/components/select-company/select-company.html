@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="select-company-container">
+  <h1>Select Company</h1>
+
+  <div *ngIf="loading">Loading companies...</div>
+  <div *ngIf="error">{{ error }}</div>
+
+  <select [(ngModel)]="selectedCompanyId">
+    <option [ngValue]="null">-- Select a Company --</option>
+    <option *ngFor="let company of companies" [ngValue]="company.id">
+      {{ company.name }}
+    </option>
+  </select>
+
+  <button (click)="onSelectCompany()" [disabled]="!selectedCompanyId">
+    Continue
+  </button>
+</div>

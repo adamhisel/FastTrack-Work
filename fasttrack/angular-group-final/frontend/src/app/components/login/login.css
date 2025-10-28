@@ -1,0 +1,144 @@
+.login-container {
+  min-height: 100vh;
+  background-color: #0b1b2b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0e6eb;
+  padding: 2rem;
+}
+
+.login-card {
+  background-color: #102b3f;
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo + Header */
+.logo {
+  margin-bottom: 2rem;
+}
+
+.logo h1 {
+  color: #1fc5a8;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.logo p {
+  font-size: 0.9rem;
+  color: #9bd7cc;
+  margin: 0;
+}
+
+/* Input groups */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #9bd7cc;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #0b1b2b;
+  color: #e0e6eb;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-control::placeholder {
+  color: #7ad4c7;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #1fc5a8;
+  background-color: #0f3148;
+}
+
+/* Error message */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Login Button */
+.btn-login {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  background-color: #1fc5a8;
+  color: #0b1b2b;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-login:hover:not(:disabled) {
+  background-color: #18a68b;
+  transform: scale(1.02);
+}
+
+.btn-login:disabled {
+  background-color: #3a555a;
+  color: #8fb8b1;
+  cursor: not-allowed;
+}
+
+/* Subtext or link under login (optional) */
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #9bd7cc;
+}
+
+.login-footer a {
+  color: #1fc5a8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.8rem;
+  }
+
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+
+  .btn-login {
+    padding: 0.7rem;
+  }
+}
