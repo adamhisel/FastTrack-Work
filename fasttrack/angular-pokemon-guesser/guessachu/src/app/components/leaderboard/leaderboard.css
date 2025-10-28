@@ -1,0 +1,110 @@
+.leaderboard-backdrop{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Level-specific backgrounds */
+.beginner-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-2.gif');
+}
+
+.experienced-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-3.gif');
+}
+
+.master-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-4.gif');
+}
+
+.champion-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-5.gif');
+}
+
+
+.top-btn{
+    font-family: "Pixelify Sans", sans-serif;
+    border-radius: 30px;
+    width: 200px;
+    height: 50px;
+    margin-top: 20px;
+        border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+h1{
+    font-family: "Pixelify Sans", sans-serif;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    font-size: 30px;
+    color: black;
+}
+
+button:hover{
+    filter: brightness(.9);
+    cursor: pointer;
+}
+
+
+.leaderboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 900px;
+  border-radius: 10px;
+  border: 1px solid rgba(13, 13, 13, 0.5);
+  background: #ffffffb2;
+  padding: 40px;
+}
+
+.leaderboard {
+  width: 580px;
+  border-collapse: separate; 
+  border-spacing: 0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 1px solid rgba(13, 13, 13, 0.5);
+  overflow: hidden; 
+}
+
+.leaderboard th {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+.leaderboard td {
+  border: 1px solid rgba(13, 13, 13, 0.5);
+  padding: 10px;
+}
+
+.leaderboard tbody tr:nth-child(odd) {
+  background-color: #e9e9e9;
+}
+
+.leaderboard tbody tr:nth-child(even) {
+  background-color: #dcdcdc;
+}
+
+
+.leaderboard th:nth-child(1),
+.leaderboard td:nth-child(1) {
+  width: 10%;
+}
+
+.leaderboard th:nth-child(2),
+.leaderboard td:nth-child(2) {
+  width: 70%;
+}
+
+.leaderboard th:nth-child(3),
+.leaderboard td:nth-child(3) {
+  width: 20%;
+}

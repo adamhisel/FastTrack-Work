@@ -1,0 +1,94 @@
+.champion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  margin-left: 20px;
+  position: relative;
+  top: -40px;
+  padding: 15px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: rgb(228, 228, 228);
+}
+
+.user-prompt-message {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.pokemon-dashboard-input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  width: 200px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.pokemon-dashboard-input:focus {
+  border-color: black;
+}
+
+.pokemon-dashboard-button {
+  padding: 10px 20px;
+  background-color: #3b4cca;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.pokemon-dashboard-button:hover {
+  background-color: #2a37a0;
+}
+
+.pokemon-dashboard-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.correct-guess {
+  border-color: #4caf50;
+  background-color: #e8f5e9;
+  transition: all 0.3s ease;
+}
+
+.wrong-guess {
+  border-color: #f44336;
+  background-color: #fdecea;
+  transition: all 0.3s ease;
+}
+
+.feedback-message {
+  font-weight: bold;
+  margin-top: 6px;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback-message.correct {
+  color: #2e7d32;
+}
+
+.feedback-message.wrong {
+  color: #c62828;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

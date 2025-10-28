@@ -1,0 +1,98 @@
+.save-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Level-specific backgrounds */
+.beginner-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-2.gif');
+}
+
+.experienced-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-3.gif');
+}
+
+.master-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-4.gif');
+}
+
+.champion-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-5.gif');
+}
+
+
+.save-modal {
+    width: min(520px, 90vw);
+    background: #ffffffb2;     
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.frosted-input {
+    padding: 0.65rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    background: rgba(14, 23, 17, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    outline: none;
+}
+
+.frosted-input::placeholder {
+    color: rgba(255, 255, 255, .5);
+}
+
+.frosted-input:focus {
+    border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+.frosted-input:hover {
+    border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+.save-btn {
+    font-family: "Pixelify Sans", sans-serif;
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+button:hover {
+    filter: brightness(.9);
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
+
+.save-modal input {
+    font-family: "Pixelify Sans", sans-serif;
+    text-align: center;
+}
+
+.save-modal .row {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.save-modal .actions {
+    display: flex;
+    gap: .5rem;
+    justify-content: flex-end;
+}

@@ -1,0 +1,39 @@
+
+.pokeball-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  --ball-size: 64px;
+}
+
+.pokeball-rain span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--x);                        
+  width: var(--ball-size);                 
+  margin-left: calc(var(--ball-size) / -2);
+  --speed: 32s;
+}
+
+.pokeball-rain .stream {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;           
+  animation: scroll var(--speed) linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  to { transform: translateY(-50%); }  
+}
+
+.pokeball-rain img {
+  width: var(--ball-size);
+  height: var(--ball-size);
+  object-fit: contain;
+  opacity: 0.95;
+}

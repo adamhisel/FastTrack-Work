@@ -1,0 +1,18 @@
+<div class="home-backdrop">
+  <div class="home">
+    <h1 class="home-title">Guessachu</h1>
+
+    <div class="top-row">
+      <button routerLink="/config" class="top-btn">
+        Difficulty: {{ difficulty$ | async }}
+      </button>
+      <button routerLink="/leaderboard" class="top-btn">
+        Leaderboard
+      </button>
+    </div>
+
+    <div class="home-body">
+      <button routerLink="/game" class="start-btn">Start Game</button>
+    </div>
+  </div>
+</div>

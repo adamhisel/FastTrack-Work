@@ -1,0 +1,64 @@
+.configuration-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../backdrop/pokemon-backdrop-3.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.configuration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(820px, 92vw);
+  border-radius: 10px;
+  border: 1px solid rgb(225, 225, 225);
+  background: #ffffffb2;     
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+button {
+  font-family: 'Pixelify Sans', sans-serif;
+  border-radius: 20px;
+  width: 300px;
+  height: 45px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  filter: brightness(0.9);
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.beginner-btn {
+  background-color: green;
+  color: white;
+}
+
+.experienced-btn {
+  background-color: yellow;
+  color: black;
+}
+
+.master-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.champion-btn {
+  background-color: black;
+  color: #ef4444;
+}

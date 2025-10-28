@@ -1,0 +1,61 @@
+.tryagain-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Level-specific backgrounds */
+.beginner-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-2.gif');
+}
+
+.experienced-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-3.gif');
+}
+
+.master-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-4.gif');
+}
+
+.champion-backdrop {
+  background-image: url('../backdrop/pokemon-backdrop-5.gif');
+}
+
+
+.tryagain-modal {
+    width: min(600px, 90vw);
+    background: #ffffffb2;   
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .75rem;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.btn {
+    font-family: "Pixelify Sans", sans-serif;
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+    border: 1px solid rgba(13, 13, 13, 0.5);
+}
+
+button:hover {
+    filter: brightness(.9);
+    cursor: pointer;
+}
+
+.tryagain-modal .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}

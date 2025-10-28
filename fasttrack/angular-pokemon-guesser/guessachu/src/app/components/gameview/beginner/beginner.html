@@ -1,0 +1,12 @@
+<p class="user-prompt-message">Choose the correct Pokémon</p>
+<div class="options-row">
+  @for (option of currentOptions; track option) {
+  <button
+    type="button"
+    class="option-button {{ getOptionClass(option) }}"
+    (click)="selectOption(option)"
+  >
+    {{ option }}
+  </button>
+  }
+</div>

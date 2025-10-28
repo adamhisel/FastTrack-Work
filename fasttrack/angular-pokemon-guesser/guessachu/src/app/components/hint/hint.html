@@ -1,0 +1,23 @@
+<div class="hint-container" *ngIf="hint">
+  <div class="hint-box">
+    <p class="hint-gameplay">{{ hint.gameplay }}</p>
+    <ul class="hint-details">
+      <li class="hint-details-list" *ngFor="let item of hint.details | keyvalue">
+        <div class="hint-details-key">
+          <strong>{{ item.key }}:</strong>
+        </div>
+        <div class="hint-details-value">
+          <span *ngIf="item.key !== 'Cry'">{{ item.value }}</span>
+          <!-- Playable cry -->
+          <span class="hint-details-value" *ngIf="item.key === 'Cry' && item.value !== 'unknown'">
+            <audio controls [src]="item.value"></audio>
+          </span>
+          <!-- If cry is unknown: may not be necessary since all pokemons most likely have cries -->
+          <span class="hint-details-value" *ngIf="item.key === 'Cry' && item.value === 'unknown'"
+            >unknown</span
+          >
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

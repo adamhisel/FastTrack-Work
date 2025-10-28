@@ -1,0 +1,12 @@
+<div class="pokeball-rain" aria-hidden="true">
+  <span *ngFor="let col of columns" [style.left]="col.x">
+    <div class="stream">
+      <ng-container *ngFor="let src of col.stack">
+        <img [src]="src" alt="" loading="lazy" />
+      </ng-container>
+      <ng-container *ngFor="let src of col.stack">
+        <img [src]="src" alt="" loading="lazy" />
+      </ng-container>
+    </div>
+  </span>
+</div>

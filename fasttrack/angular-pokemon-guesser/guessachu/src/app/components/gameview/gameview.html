@@ -1,0 +1,100 @@
+<div
+  class="gameview-backdrop"
+  [ngClass]="{
+    'beginner-backdrop': level === 'beginner',
+    'experienced-backdrop': level === 'experienced',
+    'master-backdrop': level === 'master',
+    'champion-backdrop': level === 'champion'
+  }"
+>
+  <div class="gameview">
+    <h1
+      class="gameview-title"
+      [ngClass]="{
+        'beginner-title': level === 'beginner',
+        'experienced-title': level === 'experienced',
+        'master-title': level === 'master',
+        'champion-title': level === 'champion'
+      }"
+    >
+      Guess the pokémon
+    </h1>
+
+    <!-- Render if pokemon exists -->
+    @if (pokemon) {
+    <div class="gameview-container">
+      <div class="gameview-image-container">
+        <!-- Pokemon image -->
+        <div class="gameview-image">
+          <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+        </div>
+        <!-- Hint toggle button -->
+        <button class="hint-toggle-btn" (click)="toggleHint()">
+          <i class="fa-solid fa-circle-info"></i>
+        </button>
+        <!-- Hint component -->
+        <app-hint *ngIf="showHint" [hint]="getHint()" [toggleHint]="toggleHint.bind(this)">
+        </app-hint>
+      </div>
+
+      <!-- Render the game view components based on the level -->
+      @if (level === 'beginner') {
+      <app-beginner
+        [currentOptions]="currentOptions"
+        [getOptionClass]="getOptionClass.bind(this)"
+        (answerSelected)="checkAnswer($event)"
+      />
+      } @if (level === 'experienced') {
+      <app-experienced
+        [currentOptions]="currentOptions"
+        [getOptionClass]="getOptionClass.bind(this)"
+        (answerSelected)="checkAnswer($event)"
+      />
+      } @if (level === 'master') {
+      <app-master
+        [pokemonName]="pokemonName"
+        [showHint]="showHint"
+        [hint]="getHint()"
+        [cry]="pokemon.cries?.latest"
+        [feedbackState]="feedbackState"
+        (toggleHint)="toggleHint()"
+        (answerEntered)="checkAnswer($event)"
+      />
+      } @if (level === 'champion') {
+      <app-champion
+        [pokemonName]="pokemonName"
+        [showHint]="showHint"
+        [hint]="getHint()"
+        [cry]="pokemon.cries?.latest"
+        [feedbackState]="feedbackState"
+        (toggleHint)="toggleHint()"
+        (answerEntered)="checkAnswer($event)"
+      />
+      }
+    </div>
+    }
+
+    <!-- TODO: Maybe make this a modal component ie the Try Again Modal or Save Game Modal -->
+    @if (message) {
+    <p>{{ message }}</p>
+    }
+
+    <!-- TODO: Maybe make this a component, and pass in the score and questions left also display user level and name as well -->
+    <div class="gameview-score">
+      <div class="gameview-score-title"><h4>Score card</h4></div>
+      <div class="gameview-score-details">
+        <div class="gameview-score-details-div">
+          <label for="">Questions left</label>
+          <p class="gameview-score-number">{{ questionsLeft() }}</p>
+        </div>
+        <div class="gameview-score-details-div">
+          <label for="">Score</label>
+          <p class="gameview-score-number">{{ score }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button routerLink="/" class="top-btn">Quit</button>
+    </div>
+  </div>
+</div>

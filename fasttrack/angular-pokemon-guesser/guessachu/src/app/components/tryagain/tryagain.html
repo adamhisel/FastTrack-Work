@@ -1,0 +1,20 @@
+<div
+  class="tryagain-backdrop"
+  [ngClass]="{
+    'beginner-backdrop': level === 'beginner',
+    'experienced-backdrop': level === 'experienced',
+    'master-backdrop': level === 'master',
+    'champion-backdrop': level === 'champion'
+  }"
+>
+  <div class="tryagain-modal">
+    <h2>Try Again to Make the Leaderboard!</h2>
+    <h4>Final Score: {{ score }}</h4>
+    <h4>Accuracy: {{ accuracy }}%</h4>
+    <h4>Difficulty: {{ difficulty }}</h4>
+    <div class="actions">
+      <button class="btn" (click)="tryAgain()">Try Again</button>
+      <button class="btn" (click)="goHome()">Home</button>
+    </div>
+  </div>
+</div>

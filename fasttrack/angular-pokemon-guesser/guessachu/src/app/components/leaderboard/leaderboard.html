@@ -1,0 +1,28 @@
+<div class="leaderboard-backdrop" [ngClass]="{
+    'beginner-backdrop': level === 'beginner',
+    'experienced-backdrop': level === 'experienced',
+    'master-backdrop': level === 'master',
+    'champion-backdrop': level === 'champion'
+  }">
+  <!-- <app-backdrop></app-backdrop> -->
+  <div class="leaderboard-container">
+    <h1>{{ config$ | async}} Leaderboard</h1>
+    <table class="leaderboard">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Player name</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of top10$ | async; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ row.name }}</td>
+          <td>{{ row.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button routerLink="/" class="top-btn">Home</button>
+  </div>
+</div>

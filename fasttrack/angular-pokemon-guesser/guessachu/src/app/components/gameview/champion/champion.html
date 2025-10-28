@@ -1,0 +1,30 @@
+<div
+  class="champion"
+  [ngClass]="{
+    'correct-guess': feedbackState === 'correct',
+    'wrong-guess': feedbackState === 'wrong'
+  }"
+>
+  <p class="user-prompt-message">Guess the Pokémon:</p>
+  <div class="pokemon-dashboard-input-container">
+    <input
+      type="text"
+      id="pokemon-name"
+      class="pokemon-dashboard-input"
+      [(ngModel)]="pokemonName"
+      placeholder="Enter Pokémon name"
+      (keyup.enter)="submitGuess()"
+    />
+    <button class="pokemon-dashboard-button" (click)="submitGuess()">Guess</button>
+  </div>
+  <p
+    *ngIf="feedbackState"
+    class="feedback-message"
+    [ngClass]="{
+      correct: feedbackState === 'correct',
+      wrong: feedbackState === 'wrong'
+    }"
+  >
+    {{ feedbackState === 'correct' ? 'Correct!' : 'Wrong!' }}
+  </p>
+</div>

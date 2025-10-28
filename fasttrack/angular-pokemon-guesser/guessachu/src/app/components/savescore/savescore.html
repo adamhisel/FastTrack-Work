@@ -1,0 +1,21 @@
+<div class="save-backdrop"  [ngClass]="{
+    'beginner-backdrop': level === 'beginner',
+    'experienced-backdrop': level === 'experienced',
+    'master-backdrop': level === 'master',
+    'champion-backdrop': level === 'champion'
+  }">
+  <div class="save-modal">
+    <h2>🏆 You Made the Leaderboard!</h2>
+    <h4>Final Score: {{ score }}</h4>
+    <h4>Accuracy: {{ accuracy }}%</h4>
+    <h4>Difficulty: {{ difficulty }}</h4>
+    <div class="row">
+        <input class="frosted-input" [(ngModel)]="name" maxlength="16" type="text" placeholder="Enter your Trainer Name:" >
+        <h4 class="error" *ngIf="errorMessage">Please Input a Trainer Name!</h4>
+    </div>
+
+    <div class="actions">
+      <button class="save-btn"(click)="saveScore()">Save</button>
+    </div>
+  </div>
+</div>
