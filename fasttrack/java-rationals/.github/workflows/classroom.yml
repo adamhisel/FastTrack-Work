@@ -1,0 +1,440 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Rational constructorFail
+      id: rational-constructorfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational constructorFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#constructorFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational constructorSuccess
+      id: rational-constructorsuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational constructorSuccess
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#constructorSuccess"
+        timeout: 10
+        max-score: 1
+    - name: Rational constructFail
+      id: rational-constructfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational constructFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#constructFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational constructSuccess
+      id: rational-constructsuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational constructSuccess
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#constructSuccess"
+        timeout: 10
+        max-score: 1
+    - name: Rational equals
+      id: rational-equals
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational equals
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#equals"
+        timeout: 10
+        max-score: 1
+    - name: Rational toString
+      id: rational-tostring
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational toString
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#toString"
+        timeout: 10
+        max-score: 1
+    - name: Rational negate
+      id: rational-negate
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational negate
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#negate"
+        timeout: 10
+        max-score: 1
+    - name: Rational invertFail
+      id: rational-invertfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational invertFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#invertFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational invert
+      id: rational-invert
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational invert
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#invert"
+        timeout: 10
+        max-score: 1
+    - name: Rational addFail
+      id: rational-addfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational addFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#addFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational add
+      id: rational-add
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational add
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#add"
+        timeout: 10
+        max-score: 1
+    - name: Rational subFail
+      id: rational-subfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational subFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#subFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational sub
+      id: rational-sub
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational sub
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#sub"
+        timeout: 10
+        max-score: 1
+    - name: Rational mulFail
+      id: rational-mulfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational mulFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#mulFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational mul
+      id: rational-mul
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational mul
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#mul"
+        timeout: 10
+        max-score: 1
+    - name: Rational divFail
+      id: rational-divfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational divFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#divFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational divZeroFail
+      id: rational-divzerofail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational divZeroFail
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#divZeroFail"
+        timeout: 10
+        max-score: 1
+    - name: Rational div
+      id: rational-div
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Rational div
+        setup-command: ''
+        command: mvn test -Dtest="RationalProperties#div"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational gcdFailANegative
+      id: simplifiedrational-gcdfailanegative
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational gcdFailANegative
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#gcdFailANegative"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational gcdFailBNegative
+      id: simplifiedrational-gcdfailbnegative
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational gcdFailBNegative
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#gcdFailBNegative"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational gcdSuccess
+      id: simplifiedrational-gcdsuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational gcdSuccess
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#gcdSuccess"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational simplifyFail
+      id: simplifiedrational-simplifyfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational simplifyFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#simplifyFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational simplifySuccess
+      id: simplifiedrational-simplifysuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational simplifySuccess
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#simplifySuccess"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational constructorFail
+      id: simplifiedrational-constructorfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational constructorFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#constructorFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational constructorSuccess
+      id: simplifiedrational-constructorsuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational constructorSuccess
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#constructorSuccess"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational constructFail
+      id: simplifiedrational-constructfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational constructFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#constructFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational constructSuccess
+      id: simplifiedrational-constructsuccess
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational constructSuccess
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#constructSuccess"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational equals
+      id: simplifiedrational-equals
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational equals
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#equals"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational toString
+      id: simplifiedrational-tostring
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational toString
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#toString"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational negate
+      id: simplifiedrational-negate
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational negate
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#negate"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational invertFail
+      id: simplifiedrational-invertfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational invertFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#invertFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational invert
+      id: simplifiedrational-invert
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational invert
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#invert"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational addFail
+      id: simplifiedrational-addfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational addFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#addFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational add
+      id: simplifiedrational-add
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational add
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#add"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational subFail
+      id: simplifiedrational-subfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational subFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#subFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational sub
+      id: simplifiedrational-sub
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational sub
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#sub"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational mulFail
+      id: simplifiedrational-mulfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational mulFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#mulFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational mul
+      id: simplifiedrational-mul
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational mul
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#mul"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational divFail
+      id: simplifiedrational-divfail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational divFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#divFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational divZeroFail
+      id: simplifiedrational-divzerofail
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational divZeroFail
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#divZeroFail"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational div
+      id: simplifiedrational-div
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational div
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#div"
+        timeout: 10
+        max-score: 1
+    - name: SimplifiedRational gcdFailAEquals0
+      id: simplifiedrational-gcdfailaequals0
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: SimplifiedRational gcdFailAEquals0
+        setup-command: ''
+        command: mvn test -Dtest="SimplifiedRationalProperties#gcdFailAEquals0"
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        RATIONAL-CONSTRUCTORFAIL_RESULTS: "${{steps.rational-constructorfail.outputs.result}}"
+        RATIONAL-CONSTRUCTORSUCCESS_RESULTS: "${{steps.rational-constructorsuccess.outputs.result}}"
+        RATIONAL-CONSTRUCTFAIL_RESULTS: "${{steps.rational-constructfail.outputs.result}}"
+        RATIONAL-CONSTRUCTSUCCESS_RESULTS: "${{steps.rational-constructsuccess.outputs.result}}"
+        RATIONAL-EQUALS_RESULTS: "${{steps.rational-equals.outputs.result}}"
+        RATIONAL-TOSTRING_RESULTS: "${{steps.rational-tostring.outputs.result}}"
+        RATIONAL-NEGATE_RESULTS: "${{steps.rational-negate.outputs.result}}"
+        RATIONAL-INVERTFAIL_RESULTS: "${{steps.rational-invertfail.outputs.result}}"
+        RATIONAL-INVERT_RESULTS: "${{steps.rational-invert.outputs.result}}"
+        RATIONAL-ADDFAIL_RESULTS: "${{steps.rational-addfail.outputs.result}}"
+        RATIONAL-ADD_RESULTS: "${{steps.rational-add.outputs.result}}"
+        RATIONAL-SUBFAIL_RESULTS: "${{steps.rational-subfail.outputs.result}}"
+        RATIONAL-SUB_RESULTS: "${{steps.rational-sub.outputs.result}}"
+        RATIONAL-MULFAIL_RESULTS: "${{steps.rational-mulfail.outputs.result}}"
+        RATIONAL-MUL_RESULTS: "${{steps.rational-mul.outputs.result}}"
+        RATIONAL-DIVFAIL_RESULTS: "${{steps.rational-divfail.outputs.result}}"
+        RATIONAL-DIVZEROFAIL_RESULTS: "${{steps.rational-divzerofail.outputs.result}}"
+        RATIONAL-DIV_RESULTS: "${{steps.rational-div.outputs.result}}"
+        SIMPLIFIEDRATIONAL-GCDFAILANEGATIVE_RESULTS: "${{steps.simplifiedrational-gcdfailanegative.outputs.result}}"
+        SIMPLIFIEDRATIONAL-GCDFAILBNEGATIVE_RESULTS: "${{steps.simplifiedrational-gcdfailbnegative.outputs.result}}"
+        SIMPLIFIEDRATIONAL-GCDSUCCESS_RESULTS: "${{steps.simplifiedrational-gcdsuccess.outputs.result}}"
+        SIMPLIFIEDRATIONAL-SIMPLIFYFAIL_RESULTS: "${{steps.simplifiedrational-simplifyfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-SIMPLIFYSUCCESS_RESULTS: "${{steps.simplifiedrational-simplifysuccess.outputs.result}}"
+        SIMPLIFIEDRATIONAL-CONSTRUCTORFAIL_RESULTS: "${{steps.simplifiedrational-constructorfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-CONSTRUCTORSUCCESS_RESULTS: "${{steps.simplifiedrational-constructorsuccess.outputs.result}}"
+        SIMPLIFIEDRATIONAL-CONSTRUCTFAIL_RESULTS: "${{steps.simplifiedrational-constructfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-CONSTRUCTSUCCESS_RESULTS: "${{steps.simplifiedrational-constructsuccess.outputs.result}}"
+        SIMPLIFIEDRATIONAL-EQUALS_RESULTS: "${{steps.simplifiedrational-equals.outputs.result}}"
+        SIMPLIFIEDRATIONAL-TOSTRING_RESULTS: "${{steps.simplifiedrational-tostring.outputs.result}}"
+        SIMPLIFIEDRATIONAL-NEGATE_RESULTS: "${{steps.simplifiedrational-negate.outputs.result}}"
+        SIMPLIFIEDRATIONAL-INVERTFAIL_RESULTS: "${{steps.simplifiedrational-invertfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-INVERT_RESULTS: "${{steps.simplifiedrational-invert.outputs.result}}"
+        SIMPLIFIEDRATIONAL-ADDFAIL_RESULTS: "${{steps.simplifiedrational-addfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-ADD_RESULTS: "${{steps.simplifiedrational-add.outputs.result}}"
+        SIMPLIFIEDRATIONAL-SUBFAIL_RESULTS: "${{steps.simplifiedrational-subfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-SUB_RESULTS: "${{steps.simplifiedrational-sub.outputs.result}}"
+        SIMPLIFIEDRATIONAL-MULFAIL_RESULTS: "${{steps.simplifiedrational-mulfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-MUL_RESULTS: "${{steps.simplifiedrational-mul.outputs.result}}"
+        SIMPLIFIEDRATIONAL-DIVFAIL_RESULTS: "${{steps.simplifiedrational-divfail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-DIVZEROFAIL_RESULTS: "${{steps.simplifiedrational-divzerofail.outputs.result}}"
+        SIMPLIFIEDRATIONAL-DIV_RESULTS: "${{steps.simplifiedrational-div.outputs.result}}"
+        SIMPLIFIEDRATIONAL-GCDFAILAEQUALS0_RESULTS: "${{steps.simplifiedrational-gcdfailaequals0.outputs.result}}"
+      with:
+        runners: rational-constructorfail,rational-constructorsuccess,rational-constructfail,rational-constructsuccess,rational-equals,rational-tostring,rational-negate,rational-invertfail,rational-invert,rational-addfail,rational-add,rational-subfail,rational-sub,rational-mulfail,rational-mul,rational-divfail,rational-divzerofail,rational-div,simplifiedrational-gcdfailanegative,simplifiedrational-gcdfailbnegative,simplifiedrational-gcdsuccess,simplifiedrational-simplifyfail,simplifiedrational-simplifysuccess,simplifiedrational-constructorfail,simplifiedrational-constructorsuccess,simplifiedrational-constructfail,simplifiedrational-constructsuccess,simplifiedrational-equals,simplifiedrational-tostring,simplifiedrational-negate,simplifiedrational-invertfail,simplifiedrational-invert,simplifiedrational-addfail,simplifiedrational-add,simplifiedrational-subfail,simplifiedrational-sub,simplifiedrational-mulfail,simplifiedrational-mul,simplifiedrational-divfail,simplifiedrational-divzerofail,simplifiedrational-div,simplifiedrational-gcdfailaequals0
