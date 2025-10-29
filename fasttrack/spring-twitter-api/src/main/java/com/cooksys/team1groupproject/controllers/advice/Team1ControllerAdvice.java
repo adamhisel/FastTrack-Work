@@ -1,0 +1,42 @@
+package com.cooksys.team1groupproject.controllers.advice;
+
+import com.cooksys.team1groupproject.dtos.ErrorDto;
+import com.cooksys.team1groupproject.exceptions.BadRequestException;
+import com.cooksys.team1groupproject.exceptions.ConflictException;
+import com.cooksys.team1groupproject.exceptions.NotAuthorizedException;
+import com.cooksys.team1groupproject.exceptions.NotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ControllerAdvice(basePackages =  { "com.cooksys.team1groupproject.controllers"} )
+@ResponseBody
+public class Team1ControllerAdvice {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BadRequestException.class)
+    public ErrorDto handleBadRequestException(HttpServletRequest request, BadRequestException badRequestException) {
+        return new ErrorDto(badRequestException.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(NotAuthorizedException.class)
+    public ErrorDto handleNotAuthorizedException(HttpServletRequest request, NotAuthorizedException notAuthorizedException) {
+        return new ErrorDto(notAuthorizedException.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ErrorDto handleNotFoundException(HttpServletRequest request, NotFoundException notFoundException) {
+        return new ErrorDto(notFoundException.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(ConflictException.class)
+    public ErrorDto handleConflictException(HttpServletRequest request, ConflictException conflictException) {
+        return new ErrorDto(conflictException.getMessage());
+    }
+}
