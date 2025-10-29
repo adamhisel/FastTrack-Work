@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "e5df7176-6b87-4b1e-a1b0-964d22201d0d",
+		"name": "Quiz API Test Collection",
+		"description": "A collection to test the Quiz API endpoints based on the provided README and Seeder.java details.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "978772"
+	},
+	"item": [
+		{
+			"name": "List All Quizzes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Response is an array', function () {",
+							"    pm.expect(pm.response.json()).to.be.an('array');",
+							"});",
+							"pm.test('Response adheres to QuizResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id).to.be.a('number');",
+							"    pm.expect(jsonData[0].created).to.be.a('string');",
+							"    pm.expect(jsonData[0].name).to.be.a('string');",
+							"    pm.expect(jsonData[0].questions).to.be.an('array');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/quiz",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 201', function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test('Response has id, name, created, and questions fields', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('id');",
+							"    pm.expect(jsonData).to.have.property('name');",
+							"    pm.expect(jsonData).to.have.property('created');",
+							"    pm.expect(jsonData).to.have.property('questions');",
+							"});",
+							"pm.test('Response adheres to QuizResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.name).to.be.a('string');",
+							"    pm.expect(jsonData.questions).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].created).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].answers).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].answers[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].answers[0].text).to.be.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New Quiz\",\r\n    \"questions\": [\r\n        {\r\n            \"text\": \"What is the capital of France?\",\r\n            \"answers\": [\r\n                {\r\n                    \"text\": \"Paris\",\r\n                    \"correct\": true\r\n                },\r\n                {\r\n                    \"text\": \"London\"\r\n                },\r\n                {\r\n                    \"text\": \"Rome\"\r\n                },\r\n                {\r\n                    \"text\": \"Berlin\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/quiz",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Quiz by Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Response has id, name, created, and questions fields', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('id');",
+							"    pm.expect(jsonData).to.have.property('name');",
+							"    pm.expect(jsonData).to.have.property('created');",
+							"    pm.expect(jsonData).to.have.property('questions');",
+							"});",
+							"pm.test('Response adheres to QuizResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.name).to.be.a('string');",
+							"    pm.expect(jsonData.questions).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].created).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].answers).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].answers[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].answers[0].text).to.be.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/quiz/Quiz 1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz",
+						"Quiz 1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rename Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Response has updated name', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql('Updated Quiz');",
+							"});",
+							"pm.test('Response adheres to QuizResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.name).to.be.a('string');",
+							"    pm.expect(jsonData.questions).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].created).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].answers).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].answers[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].answers[0].text).to.be.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/quiz/Quiz 2/rename/Updated Quiz",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz",
+						"Quiz 2",
+						"rename",
+						"Updated Quiz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Random Question from Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Response contains question id, text, created, and answers', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('id');",
+							"    pm.expect(jsonData).to.have.property('text');",
+							"    pm.expect(jsonData).to.have.property('created');",
+							"    pm.expect(jsonData).to.have.property('answers');",
+							"});",
+							"pm.test('Response adheres to QuestionResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.text).to.be.a('string');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.answers).to.be.an('array');",
+							"    pm.expect(jsonData.answers[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.answers[0].id).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/quiz/Updated Quiz/random",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz",
+						"Updated Quiz",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Question to Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Quiz has new question added', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.questions).to.be.an('array').that.is.not.empty;",
+							"});",
+							"pm.test('Response adheres to QuizResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.name).to.be.a('string');",
+							"    pm.expect(jsonData.questions).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].created).to.be.a('string');",
+							"    pm.expect(jsonData.questions[0].answers).to.be.an('array');",
+							"    pm.expect(jsonData.questions[0].answers[0].id).to.be.a('number');",
+							"    pm.expect(jsonData.questions[0].answers[0].text).to.be.a('string');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"text\": \"What is the largest planet in the Solar System?\", \"answers\": [{\"text\": \"Jupiter\", \"correct\": true}, {\"text\": \"Saturn\"}, {\"text\": \"Earth\"}, {\"text\": \"Mars\"}]}"
+				},
+				"url": {
+					"raw": "{{base_url}}/quiz/New Quiz/add",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz",
+						"New Quiz",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Question from Quiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 200', function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test('Response has question id, text, created, and answers', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property('id');",
+							"    pm.expect(jsonData).to.have.property('text');",
+							"    pm.expect(jsonData).to.have.property('created');",
+							"    pm.expect(jsonData).to.have.property('answers');",
+							"});",
+							"pm.test('Response adheres to QuestionResponseDto schema', function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.be.a('number');",
+							"    pm.expect(jsonData.text).to.be.a('string');",
+							"    pm.expect(jsonData.created).to.be.a('string');",
+							"    pm.expect(jsonData.answers).to.be.an('array');",
+							"    pm.expect(jsonData.answers[0].text).to.be.a('string');",
+							"    pm.expect(jsonData.answers[0].id).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/quiz/New Quiz/delete/10",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"quiz",
+						"New Quiz",
+						"delete",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		}
+	]
+}
